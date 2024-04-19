@@ -150,7 +150,7 @@ def hoursval(siminfo, hours24, dofirst=False, lapselike=False):
             ts = ts.resample(freq).asfreq().fillna(0.0)
         elif ts.index.freq < freq:   # downsample
             ts = ts.resample(freq).max()
-    return ts.truncate(start, stop).to_numpy()
+    return ts.truncate(start, stop).to_numpy()[:siminfo['steps']]
 
 
 def hourflag(siminfo, hourfg, dofirst=False):
